@@ -23,6 +23,10 @@ import LiveSDK from "@msbfe/live-sdk";
 export default defineComponent({
   name: "LivePlayer",
   props: {
+    userid: {
+      type: String,
+      required: true,
+    },
     roomid: {
       type: String,
       required: true,
@@ -44,10 +48,16 @@ export default defineComponent({
     let live = null;
     const showReload = ref(false);
     const initLiveSDK = () => {
-      const { viewername = "", viewertoken = "", roomid, platform } = props;
+      const {
+        viewername = "",
+        viewertoken = "",
+        roomid,
+        platform,
+        userid,
+      } = props;
       live = LiveSDK.init({
         el: "#player-container",
-        userid: "106412F2807CF45F",
+        userid,
         platform,
         roomid,
         viewertoken,

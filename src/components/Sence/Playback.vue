@@ -8,6 +8,10 @@ import Player from "@msbfe/player-sdk";
 export default defineComponent({
   name: "PlaybackPlayer",
   props: {
+    userid: {
+      type: String,
+      required: true,
+    },
     fileId: {
       type: [Number, String],
       required: true,
@@ -21,12 +25,12 @@ export default defineComponent({
     console.log(props);
     let player = null;
     const createPlayer = () => {
-      const { fileId: vid, platform } = props;
+      const { fileId: vid, platform, userid } = props;
 
       player = Player.init({
         vid,
         platform,
-        userid: "106412F2807CF45F",
+        userid,
         el: "#player-container",
       });
     };

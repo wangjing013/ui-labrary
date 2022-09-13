@@ -1,5 +1,5 @@
-import Live from "./components/Live/index.js";
-import Button from "./components/Button/index.js";
+import Live from "./components/Live/index";
+import Button from "./components/Button/index";
 
 export { Live, Button };
 export default {

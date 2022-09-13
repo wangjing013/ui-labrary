@@ -6,19 +6,21 @@
     <template #default>
       <div class="inner-warpper">
         <NotLiveEmpty v-if="isLiveNotStarted"></NotLiveEmpty>
-        <Live
+        <LivePlayer
           v-else-if="isLiveStarting"
           ref="refLive"
+          :userid="userid"
           :roomid="roomid"
           :platform="platform"
           :viewername="viewername"
           :viewertoken="viewertoken"
           @login-success="handlerLoginSuccess"
           @live-end="handlerLiveEnd"
-        ></Live>
+        ></LivePlayer>
         <template v-else-if="isLiveEnd">
           <Playback
             v-if="isPlayback"
+            :userid="userid"
             :file-id="fileId"
             :platform="platform"
           ></Playback>
@@ -35,11 +37,12 @@
 <script>
 import { defineComponent, ref, watch, onMounted } from "vue-demi";
 import { Promised } from "vue-promised";
-import Live from "../Sence/LivePlayer.vue";
+import LivePlayer from "../Sence/LivePlayer.vue";
 import Playback from "../Sence/Playback.vue";
 import NotLiveEmpty from "./NotLiveEmpty.vue";
 import LiveEndEmpty from "./LiveEndEmpty.vue";
 import LiveStatus from "./constants/live-status";
+import { getThirdPartyUserid } from "./config";
 
 const domains = {
   test: "https://gateway-test.mashibing.cn",
@@ -50,7 +53,7 @@ export default defineComponent({
   name: "LiveComponent",
   components: {
     Promised,
-    Live,
+    LivePlayer,
     Playback,
     NotLiveEmpty,
     LiveEndEmpty,
@@ -75,6 +78,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const refLive = ref(null);
+    const userid = getThirdPartyUserid(props.env);
     const roomid = ref(""); // 直播房间号
     const fileId = ref(""); // 回放文件ID
     const platform = ref(""); // 直播平台
@@ -178,6 +182,7 @@ export default defineComponent({
 
     return {
       refLive,
+      userid,
       roomid,
       fileId,
       viewername,
