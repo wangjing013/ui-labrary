@@ -7,10 +7,9 @@
     "dist/*"
   ],
   "scripts": {
-    "dev": "vite",
     "dev:all": "npm-run-all --parallel dev:*",
     "dev:2": "vue-demi-switch 2 && cd examples/v2 && npm run serve",
-    "dev:3": "vue-demi-switch 3 && cd examples/v3 && npm run dev",
+    "dev:3": "vue-demi-switch 3 && npm run dev",
     "build:2": "vue-demi-switch 2 && cd build && npm run build",
     "build:3": "vue-demi-switch 3 && run-p type-check build-only",
     "preview": "vite preview --port 4173",
