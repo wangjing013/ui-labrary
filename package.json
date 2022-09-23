@@ -7,9 +7,11 @@
     "dist/*"
   ],
   "scripts": {
-    "dev:all": "npm-run-all --parallel dev:*",
+    "install:all": "npm-run-all --parallel install:*",
+    "install:2": "cd build && yarn",
+    "install:3": "yarn",
     "dev:2": "vue-demi-switch 2 && cd examples/v2 && npm run serve",
-    "dev:3": "vue-demi-switch 3 && npm run dev",
+    "dev:3": "vue-demi-switch 3 && vite",
     "build:2": "vue-demi-switch 2 && cd build && npm run build",
     "build:3": "vue-demi-switch 3 && run-p type-check build-only",
     "preview": "vite preview --port 4173",
