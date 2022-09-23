@@ -1,12 +1,17 @@
 <template>
-  <button>按钮</button>
+  <button>{{ title }}</button>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue-demi";
-
 export default defineComponent({
   name: "MButton",
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+  },
   setup() {},
 });
 </script>

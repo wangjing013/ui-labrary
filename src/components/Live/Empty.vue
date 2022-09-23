@@ -1,6 +1,6 @@
 <template>
   <div class="empty">
-    <img class="placeholder" />
+    <img class="placeholder" :src="src" />
     <div class="desc">{{ desc }}</div>
   </div>
 </template>
@@ -19,17 +19,6 @@ export default defineComponent({
       default: "",
     },
   },
-  setup() {
-    // const getImageUrl = () => {
-    //   if (isVue3) {
-    //     return new URL(`${props.src}`, import.meta.url).href;
-    //   }
-    // };
-
-    return {
-      // getImageUrl,
-    };
-  },
 });
 </script>
 
@@ -44,10 +33,12 @@ export default defineComponent({
   background: #11161f;
   color: #999;
   text-align: center;
+
   .placeholder {
     width: 312px;
     height: 250px;
   }
+
   .desc {
     font-size: 16px;
     font-weight: bold;

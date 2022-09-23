@@ -1,6 +1,7 @@
 // rollup.config.js
 import fs from "fs";
 import vue from "rollup-plugin-vue";
+import image from "@rollup/plugin-image";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
@@ -93,6 +94,7 @@ if (!argv.format || argv.format === "es") {
         useTsconfigDeclarationDir: true,
         emitDeclarationOnly: true,
       }),
+      image(),
       babel({
         ...baseConfig.plugins.babel,
         presets: [
@@ -133,6 +135,7 @@ if (!argv.format || argv.format === "umd") {
       }),
       ...baseConfig.plugins.postVue,
       babel(baseConfig.plugins.babel),
+      image(),
       terser({
         output: {
           ecma: 5,
@@ -160,6 +163,7 @@ if (!argv.format || argv.format === "iife") {
       vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
       babel(baseConfig.plugins.babel),
+      image(),
       terser({
         output: {
           ecma: 5,

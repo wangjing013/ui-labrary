@@ -1,6 +1,7 @@
 <template>
   <div style="width: 800px; height: 800px">
-    <LiveComponent :live-id="141" env="test"></LiveComponent>
+    <MButton title="234234"></MButton>
+    <LiveComponent :live-id="225" env="beta"></LiveComponent>
   </div>
 </template>
 
